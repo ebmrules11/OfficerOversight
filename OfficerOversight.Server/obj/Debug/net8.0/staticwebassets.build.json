@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "FD9wyd96fqWfYiLg2boy6I3e/Yuh7+TOZBjBmWfZ27A=",
+  "Source": "OfficerOversight.Server",
+  "BasePath": "_content/OfficerOversight.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\src\\OfficerOversight\\officeroversight.client\\officeroversight.client.esproj",
+      "Version": 2,
+      "Source": "officeroversight.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

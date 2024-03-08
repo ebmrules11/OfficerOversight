@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OfficerOversight.Server.Models;
+using OfficerOversight.Server.Services;
+using System.Collections.Generic;
 
 namespace OfficerOversight.Server.Controllers
 {
@@ -7,15 +9,17 @@ namespace OfficerOversight.Server.Controllers
     [ApiController]
     public class LocationsController : ControllerBase
     {
+        // Path to your CSV file - adjust this to the actual path where your CSV is stored
+        private const string CsvFilePath = @"Data\officer_oversight_Mark_I.csv";
+
         [HttpGet]
-        public IEnumerable<Location> GetLocations()
+        public ActionResult<IEnumerable<Location>> GetLocations()
         {
-            return new List<Location>
-            {
-                new Location { Id = 1, Latitude = 33.996724, Longitude = -118.269681, Title = "Crip Got Shot", Description = "Aww shit that crip be dead!" },
-                new Location { Id = 2, Latitude = 34.035142, Longitude = -118.161310, Title = "Blud Got Shot", Description = "Aww shit that Blud be dead!"},
-                new Location { Id = 3, Latitude = 33.956581, Longitude = -118.234761, Title = "Mac Daddy Got Shot", Description = "Aww shit that Mac Daddy be dead!" }
-            };
+            // Use the CsvService to read the CSV into a dictionary
+            var locationsDict = CsvService.ReadCsvToDictionary(CsvFilePath);
+
+            // Return all the values from the dictionary
+            return Ok(locationsDict.Values);
         }
     }
 }

@@ -22,4 +22,10 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\officer_oversight_Mark_I.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

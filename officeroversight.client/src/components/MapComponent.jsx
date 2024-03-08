@@ -9,8 +9,8 @@ const MapComponent = ({ pins }) => {
     const [selectedPin, setSelectedPin] = useState(null);
 
     const mapStyles = {
-        height: "90vh",
-        width: "90vh"
+        height: "95vh",
+        width: "95vh"
     };
 
     const infoWindowStyle = {
@@ -28,10 +28,10 @@ const MapComponent = ({ pins }) => {
 
     // Bounds for LA County
     const LA_BOUNDS = {
-        north: 34.5233,
-        south: 33.7037,
-        west: -118.6682,
-        east: -117.8553,
+        north: 35.1233,
+        south: 33.2037,
+        west: -119.6682,
+        east: -116.8553,
     };
 
     if (loadError) {
@@ -41,11 +41,6 @@ const MapComponent = ({ pins }) => {
     if (!isLoaded) {
         return <div>Loading maps</div>;
     }
-
-    const icon = {
-        url: "https://www.iconarchive.com/download/i91266/icons8/windows-8/Military-Firing-Gun.ico", // url
-        scaledSize: new google.maps.Size(50, 50), // scaled size
-    };
 
     return (
         <GoogleMap
@@ -59,6 +54,10 @@ const MapComponent = ({ pins }) => {
                 },
             }}>
             {pins && pins.map(pin => {
+                const icon = {
+                    url: pin.url, // url
+                    scaledSize: new google.maps.Size(50, 50), // scaled size
+                };
                 return <Marker key={pin.id} position={{ lat: pin.latitude, lng: pin.longitude }} icon={icon} onClick={() => setSelectedPin(pin)} />
             })}
             {selectedPin && (
@@ -68,10 +67,12 @@ const MapComponent = ({ pins }) => {
                 >
                     <div style={{ width: "300px", height: "300px" }}>
                         <h2>Event Data</h2>
-                        <p>Date Event Occured: 9/11/2001</p>
-                        <p>Name of Assailant: Julian Verdon</p>
-                        <p>What happened: {selectedPin.title}</p>
-                        <p>What caused the event to occur: {selectedPin.description}</p>
+                        <p>Date Event Occured: {selectedPin.date} </p>
+                        <p>Location: {selectedPin.city}, {selectedPin.state} </p>
+                        <p>Name of Deceased: {selectedPin.name} </p>
+                        <p>Race: {selectedPin.race} </p>
+                        <p>Threat Type: {selectedPin.threatType} </p>
+                        <p>Was mental illness involved: {selectedPin.wasMentalIllnessRelated}</p>
                     </div>
                 </InfoWindow>
             )}
