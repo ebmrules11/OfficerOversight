@@ -33,13 +33,6 @@ const MapComponent = ({ pins }) => {
         west: -118.6682,
         east: -117.8553,
     };
-    
-    const markerIcon = () => ({
-        url: 'https://maps.google.com/mapfiles/kml/paddle/grn-circle.png',
-        scaledSize: new window.google.maps.Size(40, 40),
-        origin: new window.google.maps.Size(0, 0),
-        anchor: new window.google.maps.Size(20, 20)
-    });
 
     if (loadError) {
         return <div>Error loading maps</div>;
@@ -52,8 +45,6 @@ const MapComponent = ({ pins }) => {
     const icon = {
         url: "https://www.iconarchive.com/download/i91266/icons8/windows-8/Military-Firing-Gun.ico", // url
         scaledSize: new google.maps.Size(50, 50), // scaled size
-        origin: new google.maps.Point(0, 0), // origin
-        anchor: new google.maps.Point(0, 0) // anchor
     };
 
     return (
